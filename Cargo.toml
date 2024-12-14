@@ -6,10 +6,9 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "Blackbox NLP solver using IPOPT and automatic differentiation"
 readme = "README.md"
-repository = "blubsldifhjüLSDKHIJFGÖLÜAKSHDÖKJLJ"
+repository = "https://github.com/prehner/ipopt-ad"
 keywords = ["optimization"]
 categories = ["science"]
-workspace = ".."
 
 [dependencies]
 ipopt = "0.6"
