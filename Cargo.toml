@@ -1,0 +1,20 @@
+[package]
+name = "ipopt-ad"
+version = "0.1.0"
+authors = ["Philipp Rehner <prehner@ethz.ch>"]
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Blackbox NLP solver using IPOPT and automatic differentiation"
+readme = "README.md"
+repository = "blubsldifhjüLSDKHIJFGÖLÜAKSHDÖKJLJ"
+keywords = ["optimization"]
+categories = ["science"]
+workspace = ".."
+
+[dependencies]
+ipopt = "0.6"
+num-dual = "0.11"
+nalgebra = "0.33"
+
+[dev-dependencies]
+approx = "0.5"
