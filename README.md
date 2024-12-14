@@ -1,4 +1,8 @@
 # IPOPT-AD - Blackbox NLP solver using IPOPT and automatic differentiation
+
+[![crate](https://img.shields.io/crates/v/ipopt-ad.svg)](https://crates.io/crates/ipopt-ad)
+[![documentation](https://docs.rs/ipopt-ad/badge.svg)](https://docs.rs/ipopt-ad)
+
 This crate provides a simple interface to the [IPOPT](https://coin-or.github.io/Ipopt/index.html)
 nonlinear program (NLP) solver. By evaluating gradients and Hessians using automatic differentiation
 provided by the [num-dual](https://github.com/itt-ustutt/num-dual) crate, it "converts" IPOPT into a blackbox solver without introducing
