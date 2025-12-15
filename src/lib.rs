@@ -94,8 +94,8 @@
 use ipopt::{BasicProblem, ConstrainedProblem};
 use nalgebra::{OVector, SVector, U1};
 use num_dual::{
-    gradient, hessian, jacobian, try_hessian, Derivative, Dual2Vec, DualNum, DualVec, DualVec64,
-    HyperDualVec, HyperDualVec64,
+    gradient, hessian, jacobian, Derivative, Dual2Vec, DualNum, DualVec, DualVec64, HyperDualVec,
+    HyperDualVec64,
 };
 use std::cell::RefCell;
 use std::convert::Infallible;
@@ -282,7 +282,7 @@ impl<T: SimpleADProblem<X>, const X: usize> BasicProblem for ADProblem<T, X, fal
 
     fn objective_grad(&self, x: &[f64], _: bool, grad_f: &mut [f64]) -> bool {
         let x = SVector::from_column_slice(x);
-        let (_, grad) = gradient(|x| self.problem.objective(x.data.0[0]), x);
+        let (_, grad) = gradient(|x| self.problem.objective(x.data.0[0]), &x);
         grad_f.copy_from_slice(&grad.data.0[0]);
         true
     }
@@ -319,7 +319,7 @@ impl<T: SimpleADProblem<X>, const X: usize> ConstrainedProblem for ADProblem<T, 
         let x = SVector::from_column_slice(x);
         let (_, jac) = jacobian(
             |x| OVector::from(self.problem.constraint_values(x.data.0[0])),
-            x,
+            &x,
         );
         for ((v, &r), &c) in vals
             .iter_mut()
@@ -359,7 +359,7 @@ impl<T: SimpleADProblem<X>, const X: usize> ConstrainedProblem for ADProblem<T, 
                         .map(|(g, &l)| g * l)
                         .sum::<Dual2Vec<_, _, _>>()
             },
-            SVector::from_column_slice(x),
+            &SVector::from_column_slice(x),
         );
         for ((v, &r), &c) in vals
             .iter_mut()
@@ -489,7 +489,7 @@ impl<T: CachedADProblem<X>, const X: usize> ConstrainedProblem for ADProblem<T, 
         lambda: &[f64],
         vals: &mut [f64],
     ) -> bool {
-        let Ok((_, _, hess)) = try_hessian(
+        let Ok((_, _, hess)) = hessian(
             |x| {
                 self.problem.evaluate(x.data.0[0]).map(|(f, g)| {
                     f * obj_factor
@@ -499,7 +499,7 @@ impl<T: CachedADProblem<X>, const X: usize> ConstrainedProblem for ADProblem<T, 
                             .sum::<Dual2Vec<_, _, _>>()
                 })
             },
-            SVector::from_column_slice(x),
+            &SVector::from_column_slice(x),
         ) else {
             return false;
         };
