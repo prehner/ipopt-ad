@@ -11,7 +11,7 @@ keywords = ["optimization"]
 categories = ["science"]
 
 [dependencies]
-ipopt = { git = "https://github.com/prehner/ipopt-rs", branch = "static_linking" }
+ipopt = "0.6"
 num-dual = "0.13"
 nalgebra = "0.34"
 
