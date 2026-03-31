@@ -1,6 +1,6 @@
 [package]
 name = "ipopt-ad"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Philipp Rehner <prehner@ethz.ch>"]
 edition = "2021"
 license = "MIT OR Apache-2.0"
@@ -11,9 +11,14 @@ keywords = ["optimization"]
 categories = ["science"]
 
 [dependencies]
-ipopt = "0.6"
 num-dual = "0.13"
 nalgebra = "0.34"
+num = "0.4"
+ipopt = { version = "0.6", optional = true }
+ripopt = { version = "0.8", optional = true }
 
 [dev-dependencies]
 approx = "0.5"
+
+[features]
+default = []

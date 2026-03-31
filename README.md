@@ -10,6 +10,11 @@ numerical errors through forward differences that could diminish the robustness 
 only limitation is that the evaluation of the objective and constraints has to be implemented
 generically for values implementing the [DualNum](https://docs.rs/num-dual/latest/num_dual/trait.DualNum.html) trait.
 
+## Solver backend
+Use the `ipopt` feature to use the original IPOPT solver accesed through the bindings provided by the [ipopt-rs](https://crates.io/crates/ipopt) crate.
+This requires IPOPT to be installed or installable (via the build script of [ipopt-sys](https://crates.io/crates/ipopt-sys)) on the system.
+Alternatively the `ripopt` feature enables integration with the pure Rust rewrite [ripopt](https://github.com/jkitchin/ripopt).
+
 ## Example: problem 71 from the Hock-Schittkowsky test-suite
 This example demonstrates how to solve the problem that is also used as example in the
 [documentation](https://coin-or.github.io/Ipopt/INTERFACES.html) of IPOPT. Because the
