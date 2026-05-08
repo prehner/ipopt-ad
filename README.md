@@ -83,3 +83,11 @@ let x = res.solver_data.solution.primal_variables;
 let x_lit = &[1f64, 4.74299963, 3.82114998, 1.37940829] as &[f64];
 assert_relative_eq!(x, x_lit, max_relative = 1e-8);
 ```
+
+## License
+
+This project is licensed under the MIT License or the Apache 2.0 license.
+
+This project depends on `IPOPT` and `ripopt`, which are licensed under EPL-2.0:
+- https://coin-or.github.io/Ipopt/index.html
+- https://github.com/jkitchin/ripopt
