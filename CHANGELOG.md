@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-16
+### Packaging
+- Updated `num-dual` dependency to 0.14. [#2](https://github.com/prehner/ipopt-ad/pull/2)
+- Updated `nalgebra` dependency to 0.35. [#2](https://github.com/prehner/ipopt-ad/pull/2)
+
 ## [0.2.0] - 2026-05-08
 ### Added
 - Added ripopt as a second backend. The `ipopt` and `ripopt` feature flags are used to integrate with the chosen backend. [#1](https://github.com/prehner/ipopt-ad/pull/1)
